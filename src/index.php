@@ -19,7 +19,7 @@ try {
     $argv = array_values($argv);
     [$number1, $number2, $operation] = $argv;
 
-    $calculator = new Calculator($number1, $number2);
+    $calculator = new Calculator($operation, $number1, $number2);
     $operand = $calculator->getCalculator();
     $result = $calculator->getResult($operand);
 
