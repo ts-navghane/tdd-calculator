@@ -36,11 +36,18 @@ class Calculator
      */
     public function getCalculator(): CalculatorInterface
     {
-        if ($this->operation === '+') {
-            return new Add();
+        switch ($this->operation) {
+            case '+':
+                $calculator = new Add();
+                break;
+            case '-':
+                $calculator = new Sub();
+                break;
+            default:
+                throw new InvalidOperationException('Invalid operation', 400);
         }
 
-        throw new InvalidOperationException('Invalid operation', 400);
+        return $calculator;
     }
 
     /**
