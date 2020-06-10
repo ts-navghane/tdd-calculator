@@ -46,6 +46,9 @@ class Calculator
             case 'x':
                 $calculator = new Multiply();
                 break;
+            case '/':
+                $calculator = new Divide();
+                break;
             default:
                 throw new InvalidOperationException('Invalid operation', 400);
         }

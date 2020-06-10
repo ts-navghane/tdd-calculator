@@ -7,6 +7,7 @@ namespace Test\Operations;
 use App\Exceptions\InvalidOperationException;
 use App\Operations\Add;
 use App\Operations\Calculator;
+use App\Operations\Divide;
 use App\Operations\Multiply;
 use App\Operations\Sub;
 use PHPUnit\Framework\TestCase;
@@ -26,8 +27,8 @@ class CalculatorTest extends TestCase
     {
         $this->number1 = 10;
         $this->number2 = 2;
-        $this->operations = ['+', '-', 'x'];
-        $this->results = [12, 8, 20];
+        $this->operations = ['+', '-', 'x', '/'];
+        $this->results = [12, 8, 20, 5];
     }
 
     public function tearDown(): void
@@ -85,5 +86,15 @@ class CalculatorTest extends TestCase
         $calculator = new Calculator('x', $this->number1, $this->number2);
         $calculatorModule = $calculator->getCalculator();
         self::assertInstanceOf(Multiply::class, $calculatorModule);
+    }
+
+    /**
+     * @throws InvalidOperationException
+     */
+    public function testGetDivideCalculator(): void
+    {
+        $calculator = new Calculator('/', $this->number1, $this->number2);
+        $calculatorModule = $calculator->getCalculator();
+        self::assertInstanceOf(Divide::class, $calculatorModule);
     }
 }
