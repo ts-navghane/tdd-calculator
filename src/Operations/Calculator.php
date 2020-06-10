@@ -43,6 +43,9 @@ class Calculator
             case '-':
                 $calculator = new Sub();
                 break;
+            case 'x':
+                $calculator = new Multiply();
+                break;
             default:
                 throw new InvalidOperationException('Invalid operation', 400);
         }
