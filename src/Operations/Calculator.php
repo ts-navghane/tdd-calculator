@@ -13,16 +13,19 @@ use App\Interfaces\CalculatorInterface;
  */
 class Calculator
 {
+    private $operation;
     private $number1;
     private $number2;
 
     /**
      * Calculator constructor.
+     * @param $operation
      * @param $number1
      * @param $number2
      */
-    public function __construct($number1, $number2)
+    public function __construct($operation, $number1, $number2)
     {
+        $this->operation = (string)$operation;
         $this->number1 = (float)$number1;
         $this->number2 = (float)$number2;
     }
@@ -33,6 +36,10 @@ class Calculator
      */
     public function getCalculator(): CalculatorInterface
     {
+        if ($this->operation === '+') {
+            return new Add();
+        }
+
         throw new InvalidOperationException('Invalid operation', 400);
     }
 
